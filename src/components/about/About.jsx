@@ -1,6 +1,30 @@
+const core_strengths = [
+  {
+    pillar:' AWS Architecture',
+    description:'Well-Architected Framework, high availability, fault tolerance, and cost optimization.'
+  },
+    {
+    pillar:'Cloud Infrastructure',
+    description:' Infrastructure as Code, networking, IAM, and security best practices.'
+  },
+    {
+    pillar:'DevOps & Automation',
+    description:'CI/CD pipelines, containerized workloads, monitoring, and observability.'
+  },
+    {
+    pillar:'Full-Stack Delivery',
+    description:' Building, deploying, and operating production-ready web applications.'
+  }
+]
+const who_i_am = [
+  " I am a Cloud Engineer and Solutions Architect with hands-on experience designing and implementing AWS solutions aligned with the AWS Well-Architected Framework. I architect secure, resilient, high-performing, and cost-optimized systems using core AWS services, applying best practices for identity and access management, networking, and data protection.",
+  "   I design scalable and highly available architectures by selecting appropriate compute, storage, database, and networking services on AWS. I have experience implementing fault-tolerant solutions using multi-AZ designs, load balancing, auto scaling, and managed services, while leveraging infrastructure as code, CI/CD pipelines, and automation to deploy and operate workloads reliably.",
+  "With a strong full-stack and DevOps background, I bridge architecture and execution by building, deploying, and operating applications in AWS. I design solutions that balance technical requirements, security, and cost, while continuously improving performance, observability, and operational excellence across the system lifecycle."
+]
+
 const About = () => {
   return (
-    <section id="about" className="bg-white">
+    <section id="about" className="bg-dusk-accent/20">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="text-3xl text-center font-extrabold tracking-tight">
           About Me
@@ -9,33 +33,17 @@ const About = () => {
         <div className="mt-10 grid gap-12 md:grid-cols-2">
           {/* Left column: Narrative */}
           <div className="space-y-6 text-gray-600 leading-relaxed">
-            <p>
-              I am a Cloud Engineer and Solutions Architect with hands-on
-              experience designing and implementing AWS solutions aligned with
-              the AWS Well-Architected Framework. I architect secure, resilient,
-              high-performing, and cost-optimized systems using core AWS
-              services, applying best practices for identity and access
-              management, networking, and data protection.
-            </p>
+        
+          {
+            who_i_am.map((para, idx)=>(
 
-            <p>
-              I design scalable and highly available architectures by selecting
-              appropriate compute, storage, database, and networking services on
-              AWS. I have experience implementing fault-tolerant solutions using
-              multi-AZ designs, load balancing, auto scaling, and managed
-              services, while leveraging infrastructure as code, CI/CD
-              pipelines, and automation to deploy and operate workloads
-              reliably.
+              
+              <p key={idx}>
+              {para}
+              
             </p>
-
-            <p>
-              With a strong full-stack and DevOps background, I bridge
-              architecture and execution by building, deploying, and operating
-              applications in AWS. I design solutions that balance technical
-              requirements, security, and cost, while continuously improving
-              performance, observability, and operational excellence across the
-              system lifecycle.
-            </p>
+            ))
+          }
           </div>
 
           {/* Right column: Key strengths */}
@@ -45,45 +53,22 @@ const About = () => {
             </h3>
 
             <ul className="mt-6 space-y-4 text-gray-600">
-              <li>
+  
+          {
+            core_strengths.map((strength, idx)=>(
+
+          
+              <li key={idx}>
                 <span className="font-medium text-gray-900">
-                  AWS Architecture
+                  {strength.pillar}
                 </span>
                 <p className="text-sm">
-                  Well-Architected Framework, high availability, fault tolerance,
-                  and cost optimization.
+                  {strength.description}
                 </p>
               </li>
 
-              <li>
-                <span className="font-medium text-gray-900">
-                  Cloud Infrastructure
-                </span>
-                <p className="text-sm">
-                  Infrastructure as Code, networking, IAM, and security best
-                  practices.
-                </p>
-              </li>
-
-              <li>
-                <span className="font-medium text-gray-900">
-                  DevOps & Automation
-                </span>
-                <p className="text-sm">
-                  CI/CD pipelines, containerized workloads, monitoring, and
-                  observability.
-                </p>
-              </li>
-
-              <li>
-                <span className="font-medium text-gray-900">
-                  Full-Stack Delivery
-                </span>
-                <p className="text-sm">
-                  Building, deploying, and operating production-ready web
-                  applications.
-                </p>
-              </li>
+                ))
+          }
             </ul>
           </div>
         </div>

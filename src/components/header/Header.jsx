@@ -1,5 +1,44 @@
-import { useState, useEffect } from "react";
+const navLinks = [
+  {
 
+    label:"Hero",
+    id:"hero"
+  },
+  {
+
+    label:"About",
+    id:"about"
+  },
+  {
+
+    label:"Skills",
+    id:"skills"
+  },
+  {
+
+    label:"Experience / Projects",
+    id:"projects"
+  },
+
+  {
+
+    label:"Blog",
+    id:"articles"
+  },
+  {
+
+    label:"Eduction",
+    id:"education"
+  },
+  {
+    label:"Contact",
+    id:"contact"
+  }
+]
+
+
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 const Header = () => {
   const [open, setOpen] = useState(false);
 
@@ -19,7 +58,7 @@ const Header = () => {
 
 
   return (
-    <header className="bg-white shadow-lg">
+    <header className="bg-dusk-accent fixed top-0 left-0 z-50 right-0 text-dusk-section shadow-lg" id="header">
       <div className="max-w-7xl mx-auto flex items-center justify-center px-6 py-4">
    
 
@@ -27,17 +66,16 @@ const Header = () => {
         <nav
           className={`
             ${open ? "flex" : "hidden"}
-            flex-col md:flex-row gap-6 text-sm font-medium text-gray-800
-            md:flex
-          `}
+            flex-col md:flex-row gap-6 text-sm font-medium
+            md:flex`}
         >
-          <a href="#" onClick={() => setOpen(false)} className="hover:underline">Hero</a>
-          <a href="#" onClick={() => setOpen(false)} className="hover:underline">About</a>
-          <a href="#" onClick={() => setOpen(false)} className="hover:underline">Skills</a>
-          <a href="#" onClick={() => setOpen(false)} className="hover:underline">Experience / Projects</a>
-          <a href="#" onClick={() => setOpen(false)} className="hover:underline">Education</a>
-          <a href="#" onClick={() => setOpen(false)} className="hover:underline">Blog</a>
-          <a href="#" onClick={() => setOpen(false)} className="hover:underline">Contact</a>
+          {
+            navLinks.map((item)=>(
+
+              <Link to={`/#${item.id}`} key={item.id} onClick={() => setOpen(false)} className="hover:underline">{item.label}</Link>
+            ))
+          }
+
         </nav>
 
         {/* Toggle button */}
