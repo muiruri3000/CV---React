@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../security/AuthContext";
+
 const navLinks = [
   {
 
@@ -27,7 +30,7 @@ const navLinks = [
   },
   {
 
-    label:"Eduction",
+    label:"Education",
     id:"education"
   },
   {
@@ -41,6 +44,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const {user, logout} = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate("/login", {replace:true})
+  }
 
 
     useEffect(()=>{
@@ -75,7 +85,18 @@ const Header = () => {
               <Link to={`/#${item.id}`} key={item.id} onClick={() => setOpen(false)} className="hover:underline">{item.label}</Link>
             ))
           }
-
+          <Link to="/create"onClick={()=>setOpen(false)}>Create Content</Link>
+          <Link to="/login"onClick={()=>setOpen(false)}>Login</Link>
+          {
+            user && (
+              <button
+                onClick={handleLogout}
+                className="text-sm bg-red-500 text-white px-3 py-1 rounded"
+              >
+                Log Out
+              </button>
+            )
+          }
         </nav>
 
         {/* Toggle button */}

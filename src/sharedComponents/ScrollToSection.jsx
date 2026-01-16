@@ -1,32 +1,22 @@
 import { useEffect } from "react";
-import {useLocation} from "react-router-dom"
-
-
+import { useLocation } from "react-router-dom";
 
 const ScrollToSection = () => {
-    
-    
-    const location = useLocation(); 
+  const { pathname, hash } = useLocation();
 
+  useEffect(() => {
+    // Only handle scrolling on home page
+    if (pathname !== "/" || !hash) return;
 
-    useEffect(()=>{
-        if (!location.hash) return; 
+    const id = hash.replace("#", "");
+    const element = document.getElementById(id);
 
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [pathname, hash]);
 
-        const id = location.hash.replace("#", "")
-        const element = document.getElementById(id)
+  return null;
+};
 
-
-        if (element){
-            element.scrollIntoView({
-                behavior:'smooth',
-                block: 'start'
-            });
-        }
-    }, [location])
-
-    return null
-}
-
-
-export default ScrollToSection
+export default ScrollToSection;
